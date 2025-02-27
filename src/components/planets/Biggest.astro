@@ -1,0 +1,163 @@
+---
+import Small from "./Small.astro";
+import Cred from "../Cred.astro";
+
+---
+
+<script>
+    import type { toCodes } from "astro:i18n";
+import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(".box", {
+        x: "-50vw",
+        width: "+=20vw",
+        height: "+=20vw",
+        scrollTrigger: {
+            trigger: ".trig",
+            start: "top center",
+            end: "+300%",
+            pin: true,
+            scrub: 1,
+        },
+    });
+  
+    let planetsTimeline = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".trig",
+        pin: ".trigEnd",
+        start: "top center",
+        end: "+1000%",
+        // markers: true,
+        scrub: 1,
+    }
+});
+
+planetsTimeline
+    .to([".planets",".elpis"], {
+        rotate: "+=250",
+       
+        width: "+=50vw",
+        height: "+=50vw",
+        duration: "30",
+    })
+    .to(".boxi"
+    , {
+        
+        width: "+=10vw",
+        height: "+=10vw",
+        duration: "30",
+    }, "<"
+    )
+    .to(".cred-inner", {
+        color: "blue",
+        right: "5%",
+        duration: "30",
+    },)
+
+   
+
+    .to([".planets",".elpis"], {
+    
+        rotate: "+=385" ,
+        duration: "100"
+    });
+
+
+</script>
+
+<div class="trig"></div>
+<div class="trigEnd"></div>
+
+<div class="trigStop"></div>
+
+<div class="box">
+    <div class="orbit">
+        <img class="elpis" src="src/assets/elipsa.png" alt="elipsa" />
+        <!-- <svg class="elpis" height="100" width="100" xmlns="http://www.w3.org/2000/svg">
+            <circle r="45" cx="50" cy="50" fill="red" fill-opacity="0" stroke="cyan" stroke-width="3" opacity="0.5" />
+        </svg> -->
+        <div class="planets">
+            <Small color="#75d875" top="2%" left="65%" />
+            <Small color="#d875cd" top="60%" left="0%" />
+            <Small color="#758fd8" top="100%" left="35%" />
+            <Small color="#bd75d8" top="30%" left="100%" />
+            <Small color="#bd75d8" top="20%" left="20%" />
+            <Small color="#bd75d8" top="30%" left="100%" />
+            <Small color="#bd75d8" top="80%" left="80%" />
+         </div>
+   
+    </div>
+   
+   
+</div>
+<Cred class="cred"></Cred>
+
+<div class="scroll-area"></div>
+
+<style>
+    .planets {
+     
+        
+        position: absolute;
+        opacity: 1;
+        height: 80vh;
+        width: 45vw;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) ;
+    }
+
+    .orbit {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .elpis {
+        rotate: -45deg;
+        height: 100vh;
+        width: 50vw;
+        
+    }
+  
+    .trig {
+        position: absolute;
+        top: 200%;
+        height: 100vh;
+        width: 100%;
+
+        /* background-color: rgb(0, 157, 248); */
+    }
+    .trigEnd {
+        position: absolute;
+        top: 80%;
+        height: 1vh;
+        width: 100%;
+        /* background-color: rgb(0, 157, 248); */
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .box {
+        position: fixed; /* Użycie position: fixed, aby kula była przypięta do ekranu */
+        top: 50%; /* Wyśrodkowanie w pionie */
+        left: 50%; /* Wyśrodkowanie w poziomie */
+        width: 20vw;
+        height: 20vw;
+        border-radius: 50%;
+        background-color: rgb(0, 157, 248);
+        transform: translate(-50%, -50%); /* Dokładne wyśrodkowanie */
+    }
+    .scroll-area {
+        height: 220vh; /* Symulacja scrollowania */
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+</style>

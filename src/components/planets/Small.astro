@@ -1,0 +1,25 @@
+---
+const {color, top ,left}  = Astro.props;
+---
+
+
+
+<div class="boxi" style={`background-color: ${color}; top: ${top}; left: ${left};`}>
+   
+</div>
+
+<style>
+    .boxi {
+        position: absolute;
+        
+        top: 50%; /* Wyśrodkowanie w pionie */
+        left: 50%; /* Wyśrodkowanie w poziomie */
+        width: 8vw;
+        height: 8vw;
+        border-radius: 50%;
+        background-color: rgb(0, 157, 248);
+       
+        transform: translate(-50%, -50%); /* Dokładne wyśrodkowanie */
+
+    }
+</style>
