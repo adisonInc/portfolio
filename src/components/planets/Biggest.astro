@@ -6,7 +6,10 @@ import Cred from "../Cred.astro";
 
 <script>
     import type { toCodes } from "astro:i18n";
-import { gsap } from "gsap";
+    import { gsap } from "gsap";
+    import { TextPlugin } from "gsap/TextPlugin";
+    gsap.registerPlugin(TextPlugin);
+
     import { ScrollTrigger } from "gsap/ScrollTrigger";
     gsap.registerPlugin(ScrollTrigger);
 
@@ -50,14 +53,18 @@ planetsTimeline
         duration: "30",
     }, "<"
     )
+    // .to(".cred-inner", {
+    //     color: "blue",
+    //     fontSize: "2vw",
+    //     right: "5%",
+    //     duration: "30",
+    // },)
     .to(".cred-inner", {
-        color: "blue",
-        right: "5%",
-        duration: "30",
-    },)
-
-   
-
+    duration: 30,
+    text: "Kamil Plakwicz",
+    ease: "power1.inOut",
+    },"<"
+    ) 
     .to([".planets",".elpis"], {
     
         rotate: "+=385" ,
