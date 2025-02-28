@@ -1,11 +1,18 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Biggest from '../components/planets/Biggest.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import  '../components/style.css'
 ---
 
 <Layout>
-	<Welcome />
+	
+	<Biggest></Biggest>
+	
+	<style>
+		svg{
+			transform: translate(-50%, -50%) rotateX(-45deg) rotateY(-45deg);
+
+		}
+	</style>
 </Layout>
