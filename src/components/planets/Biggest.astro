@@ -2,102 +2,178 @@
 import Small from "./Small.astro";
 import Cred from "../Cred.astro";
 
+
+
 ---
 
 <script>
-    import type { toCodes } from "astro:i18n";
+    import projekt1Text from "../../assets/projekt1.json"
+
     import { gsap } from "gsap";
+
     import { TextPlugin } from "gsap/TextPlugin";
     gsap.registerPlugin(TextPlugin);
 
     import { ScrollTrigger } from "gsap/ScrollTrigger";
     gsap.registerPlugin(ScrollTrigger);
 
-    // gsap
-    //     // height: "+=20vw",
-    //     scrollTrigger: {
-    //         trigger: ".trig",
-    //         start: "top center",
-    //         end: "+300%",
-    //         markers: true,
-    //         scrub: 1,
-    //     },
-    // });
-  
-    let planetsTimeline = gsap.timeline({
-    scrollTrigger: {
-      
-        trigger: ".trig",
-        pin: ".trigEnd",
-        start: "top center",
-        markers: true,
-        end:"4500px",
-        //markers: true,
-        scrub: 1,
+    
+    let text1 = projekt1Text.text1;
+    let text2 = projekt1Text.text2;
+    let text3 = projekt1Text.text3;
+    
+
+       
+    let intro = gsap.timeline({
         
-    }
-});
-
-planetsTimeline
-    .to(".box", {
-        left: "0",
-         scale: 1.5,
-         duration: 30,
     })
+    intro
+    .fromTo(".scrollMess",{ text: "",}, {
+            duration: 1.5,
+       
+            text: "Welcome :)",
+            ease: "power1.inOut",
+        })
+   .to(".scrollMess", {
+            duration: 1,
+       
+            text: "Start Scrolling...",
+            ease: "power1.inOut",
+        })
+        
+    let planetsTimeline = gsap.timeline({
+        
+        scrollTrigger: {
+            // preventOverlaps: true,
+            trigger: ".trig",
+            pin: ".trigEnd",
+            start: "top center",
+            
+            end: "4500px",
+            // markers: true,
+            scrub: 1,
+        },
+    });
 
-    .to([".elpis",".planets"], {
-        rotate: "+=360",
+    planetsTimeline
+    .to(".scrollMess", 
+    {
+            duration: 15,
+            opacity:0,
+           
+            ease: "power1.inOut",
+        })
+    .from(".box", {
+            top: "100%",
+            scale: 1.5,
+            duration: 30,
+        },"<")
+    //snap1
+    .to(".box", {
+            left: "0",
+            scale: 1.5,
+            duration: 30,
+        })
+        .to(
+            [".elpis", ".planets"],
+            {
+                rotate: "+=90",
+
+                scrub: 0,
+                duration: 30,
+            },
+            "<",
+        )
+
+        .to([".elpis", ".planets"], {
+            x: "-=5vw",
+            scale: 1.5,
+            duration: 20,
+        }, "<",)
+        //snap2
+        .to(".cred2", {
+            duration: 15,
+            text: "Kamil Plakwicz",
+            ease: "power1.inOut",
+        },"<",)
+        //snap3
+        .to(".cred-inner", {
+            duration: 20,
+            text: text1 ,
+            ease: "power1.inOut",
+        })
+         //snap4
+        .to(".cred3", {
+            duration: 10,
+            text: "Projekt1",
+            ease: "power1.inOut",
+        },"<")
+        .to(".box", {
+            duration: 20,
+      
+        },)
+        .to([".elpis", ".planets"], {
+            rotate: "+=90",
+
+            duration: "30",
+        })
+          //snap5
+        .to(".cred-inner",{
+            duration: 30,
+            text: text2,
+            ease: "power1.inOut",
+        },"<")
+        .to(".cred3", {
+            duration: 10,
+            text: "Projekt2",
+            ease: "power1.inOut",
+        },"<")
+        .to(".box", {
+            duration: 20,
+      
+        },)
+        .to([".elpis", ".planets"], {
+            rotate: "+=90",
+
+            duration: "30",
+        })
+          //snap5
+        .to(".cred-inner",{
+            duration: 30,
+            text: text3,
+            ease: "power1.inOut",
+        },"<")
+        .to(".cred3", {
+            duration: 10,
+            text: "Projekt3",
+            ease: "power1.inOut",
+        },"<")
+        .to(".box", {
+            duration: 20,
+      
+        },)
+        .to([".elpis", ".planets"], {
+            rotate: "+=90",
+
+            duration: "30",
+        })
+          //snap5
+        .to(".cred-inner",{
+            duration: 30,
+            text: text3,
+            ease: "power1.inOut",
+        },"<")
+        .to(".cred3", {
+            duration: 10,
+            text: "Projekt3",
+            ease: "power1.inOut",
+        },"<")
+        
+
        
       
-        duration: "30",
-    },"<")
-   
-
-    .to([".elpis",".planets"], {
-        x: "-=5vw",
-        scale: 1.5,
-        duration: "15",
-    })
-
-  
-   
-    .to(".cred-inner", {
-    duration: 30,
-    text: 'Kamil Plakwicz \n Projekt 1',
-    ease: "power1.inOut",
-    }, )
-    .to([".elpis",".planets"], {
-        rotate: "+=90",
-      
-        duration: "30",
-    },)
-    .to(".cred-inner", {
-    duration: 30,
-    text: 'Projekt 2',
-    ease: "power1.inOut",
-    }, )
-    .to([".elpis",".planets"], {
-        rotate: "+=90",
-      
-        duration: "30",
-    },)
-    .to(".cred-inner", {
-    duration: 30,
-    text: 'Kamil Plakwicz \n Projekt 2',
-    ease: "power1.inOut",
-    }, )
-    .to(".box", {
-    duration: 30,
-        scale: 1,
-    }, )
-   
-    
-   
-     
-
-
 </script>
-
+<div class="scrollMess"></div>
 <div class="trig"></div>
 <div class="trigEnd"></div>
 
@@ -110,31 +186,56 @@ planetsTimeline
             <circle r="45" cx="50" cy="50" fill="red" fill-opacity="0" stroke="cyan" stroke-width="3" opacity="0.5" />
         </svg> -->
         <div class="planets">
-            <Small color="#00879E" top="0%" left="50%" />
-            <Small color="#AA60C8" top="50%" left="0%" />
-            <Small color="#B3D8A8" top="100%" left="50%" />
+            <Small color="#00879E" top="0%" left="50%" rotate="-90deg" />
+            <Small color="#AA60C8" top="50%" left="0%" rotate="180deg" />
+            <Small color="#B3D8A8" top="100%" left="50%" rotate="90deg" />
 
-           
-            <Small color="#E195AB" top="50%" left="100%" />
+            <Small color="#E195AB" top="50%" left="100%" rotate="0deg" />
             <!-- <Small color="#bd75d8" top="15%" left="15%" /> -->
             <!-- <Small color="#bd75d8" top="15%" left="85%" /> -->
             <!-- <Small color="#bd75d8" top="85%" left="85%" /> -->
-         </div>
-   
+        </div>
     </div>
-   
-   
 </div>
-<Cred class="cred"></Cred>
-<Cred class=".cred2"></Cred>
 
+<Cred class="cred" />
+<div class="cred3" > </div>
+<div class="cred2" > </div>
 
 <div class="scroll-area"></div>
 
 <style>
+      .cred3{
+
+        position: fixed;
+        top: 20%;
+        right:  45%;
+        color: rgba(87, 118, 255, 0.329);
+        font-size: 2vw;
+
+        color:   color: rgb(87, 118, 255);;
+    }
+    .cred2{
+
+        position: fixed;
+        bottom:5%;
+        right:  5%;
+        color: rgba(87, 118, 255, 0.329);
+        font-size: 2vw;
+       
+        color:   color: rgb(87, 118, 255);;
+    }
+    .scrollMess{
+        position: fixed;
+        /* background-color: #00ffaa; */
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        color: rgb(87, 118, 255);;
+        font-size: 5vw;
+        text-wrap: nowrap;
+    }
     .planets {
-     
-        
         position: absolute;
         opacity: 15;
         height: 39vw;
@@ -142,7 +243,7 @@ planetsTimeline
         top: 50%;
         left: 50%;
         /* background-color: aqua; */
-        transform: translate(-50%, -50%) ;
+        transform: translate(-50%, -50%);
     }
 
     .orbit {
@@ -152,13 +253,18 @@ planetsTimeline
         transform: translate(-50%, -50%);
     }
     .elpis {
-        
         height: 45vw;
-        
-        
     }
-  
+
     .trig {
+        position: absolute;
+        top: 50%;
+        height: 100vh;
+        width: 100%;
+
+        /* background-color: rgb(0, 157, 248); */
+    }
+    .trigIntro {
         position: absolute;
         top: 200%;
         height: 100vh;
@@ -186,8 +292,11 @@ planetsTimeline
         width: 20vw;
         height: 20vw;
         border-radius: 50%;
-        background-color: #A7E6FF;
-        transform: translate(-50%, -50%); /* Dokładne wyśrodkowanie */
+        background-color: #a7e6ff;
+        transform: translate(-50%, -50%); 
+        box-shadow: inset -10px -10px 20px #00ffaa,
+         inset 10px 10px 20px #00ffaa;
+      
     }
     .scroll-area {
         height: 220vh; /* Symulacja scrollowania */

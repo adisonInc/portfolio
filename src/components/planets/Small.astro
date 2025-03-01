@@ -1,10 +1,12 @@
 ---
-const {color, top ,left}  = Astro.props;
+const {color, top ,left, rotate}  = Astro.props;
 ---
 
 
 
-<div class="boxi" style={`background-color: ${color}; top: ${top}; left: ${left};`}>
+<div class="boxi" style={`background-color: ${color}; 
+top: ${top}; left: ${left};
+ transform:  translate(-50%, -50%) rotate(${rotate});`}>
    
 </div>
 
@@ -18,8 +20,9 @@ const {color, top ,left}  = Astro.props;
         height: 8vw;
         border-radius: 50%;
         background-color: rgb(0, 157, 248);
-       
-        transform: translate(-50%, -50%); /* Dokładne wyśrodkowanie */
+        box-shadow: inset -10px -10px 20px #832a2a69, inset 10px 1px 20px #00ffaa91;
+        
+        /* Dokładne wyśrodkowanie */
 
     }
 </style>
