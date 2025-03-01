@@ -68,13 +68,38 @@ import Cred from "../Cred.astro";
             scale: 1.5,
             duration: 30,
         },"<")
-    //snap1
+    .to(".box", {
+            
+            scale: 10,
+            duration: 30,
+        },)
+        .to(".boxText", {
+            text: "Jestem kamil lubie programowac itp itd arch linux pozdrowienia kohcam patrysie <3",
+            opacity: 1,
+            duration: 30,
+        },"<")
+        .to(".boxText", {
+            
+            opacity: 1,
+            duration: 30,
+        })
+        .to(".box", {
+            
+            scale: 1,
+            duration: 30,
+        },)
+        .to(".boxText", {
+            
+            opacity: 0,
+            duration: 30,
+        },"<")
     .to(".box", {
             left: "0",
             scale: 1.5,
             duration: 30,
         })
-        .to(
+      
+    .to(
             [".elpis", ".planets"],
             {
                 rotate: "+=90",
@@ -92,16 +117,24 @@ import Cred from "../Cred.astro";
         }, "<",)
         //snap2
         .to(".cred2", {
+            right: "5%",
             duration: 15,
-            text: "Kamil Plakwicz",
+            opacity: 1,
+            // text: "Kamil Plakwicz",
             ease: "power1.inOut",
         },"<",)
+        
         //snap3
         .to(".cred-inner", {
             duration: 20,
             text: text1 ,
             ease: "power1.inOut",
         })
+        .to(".boxiImg" ,{
+            opacity: 1,
+
+            duration: "30",
+        },"<")
          //snap4
         .to(".cred3", {
             duration: 10,
@@ -117,6 +150,8 @@ import Cred from "../Cred.astro";
 
             duration: "30",
         })
+    
+        
           //snap5
         .to(".cred-inner",{
             duration: 30,
@@ -180,17 +215,24 @@ import Cred from "../Cred.astro";
 <div class="trigStop"></div>
 
 <div class="box">
+    <img  class="boxText" id="boxTextImage" src="src/assets/hhholographic.jpg" alt="elipsa" />
+    <!-- <img  class="boxText" id="boxTextImage" src="src/assets/uuundulate.svg" alt="elipsa" /> -->
+
+    <div class="boxText">
+        <p>dsdsadsddsadsdsdsds</p>
+    </div>
+    <!-- <img class="logo" src="src/assets/.svg" alt="elipsa" /> -->
     <div class="orbit">
         <img class="elpis" src="src/assets/circle1.svg" alt="elipsa" />
         <!-- <svg class="elpis" height="100" width="100" xmlns="http://www.w3.org/2000/svg">
             <circle r="45" cx="50" cy="50" fill="red" fill-opacity="0" stroke="cyan" stroke-width="3" opacity="0.5" />
         </svg> -->
         <div class="planets">
-            <Small color="#00879E" top="0%" left="50%" rotate="-90deg" />
-            <Small color="#AA60C8" top="50%" left="0%" rotate="180deg" />
-            <Small color="#B3D8A8" top="100%" left="50%" rotate="90deg" />
+            <Small color="#00879E" top="0%" left="50%" rotate="-90deg" img="src/assets/rust.png" />
+            <Small color="#AA60C8" top="50%" left="0%" rotate="180deg" img="src/assets/cpp.png" />
+            <Small color="#B3D8A8" top="100%" left="50%" rotate="90deg" img="src/assets/astro.png" />
 
-            <Small color="#E195AB" top="50%" left="100%" rotate="0deg" />
+            <Small color="#E195AB" top="50%" left="100%" rotate="0deg"  img="src/assets/python.svg"/>
             <!-- <Small color="#bd75d8" top="15%" left="15%" /> -->
             <!-- <Small color="#bd75d8" top="15%" left="85%" /> -->
             <!-- <Small color="#bd75d8" top="85%" left="85%" /> -->
@@ -200,27 +242,89 @@ import Cred from "../Cred.astro";
 
 <Cred class="cred" />
 <div class="cred3" > </div>
-<div class="cred2" > </div>
+<div class="cred2" >
+        <div class="cred2inner">
+        <a href="https://www.github.com/adisonInc">github</a>
+        <img class="git" src="src/assets/github-logo.png" alt="">
+        <a href="https://www.github.com/adisonInc"></a>
+        </img>
+    </div>
+   
+
+</div>
+
 
 <div class="scroll-area"></div>
 
 <style>
+
+    #boxTextImage{
+        width: 20vw;
+        height: 20vw;
+
+        border-radius: 50%;
+    }
+
+    .boxText{
+        overflow-wrap: break-word;
+        position: fixed;
+        transform: translate(-50%,-50%);
+        top: 50%;
+        left: 50%;
+        /* background-image: url('../../assets/astro.svg'); */
+        /* background-color: #00ffaa; */
+        width: 5vw;
+        height: 5vw;
+        opacity:0;
+        color: blueviolet;
+        font-size: 0.5vw;
+    }
+    a{  
+        color: #2c00f07a;
+        text-decoration: wavy ;
+    }
+    .git{
+        width: 3vw;
+        vertical-align: text-top;
+        
+       
+        filter: invert(12%) 
+                sepia(86%) 
+                saturate(3940%) 
+                hue-rotate(250deg) 
+                brightness(74%) 
+                contrast(124%);
+    }
+
+    .hidder{
+        position: fixed;
+        background-color:  rgb(12, 6, 40);
+        z-index: 99999;
+        display: inline-block;
+        width: 5vw;
+        height: 10vw;
+        right: 0%;
+        bottom: 0;
+
+    }
       .cred3{
 
         position: fixed;
         top: 20%;
         right:  45%;
-        color: rgba(87, 118, 255, 0.329);
+        color: #5776ff52;
         font-size: 2vw;
 
         color:   color: rgb(87, 118, 255);;
     }
     .cred2{
-
+       
+        z-index: 9999;
+        opacity: 0;
         position: fixed;
         bottom:5%;
-        right:  5%;
-        color: rgba(87, 118, 255, 0.329);
+        right:  -100%;
+        color: #2c00f07a;
         font-size: 2vw;
        
         color:   color: rgb(87, 118, 255);;

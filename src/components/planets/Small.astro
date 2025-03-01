@@ -1,5 +1,5 @@
 ---
-const {color, top ,left, rotate}  = Astro.props;
+const {color, top ,left, rotate,img}  = Astro.props;
 ---
 
 
@@ -7,7 +7,7 @@ const {color, top ,left, rotate}  = Astro.props;
 <div class="boxi" style={`background-color: ${color}; 
 top: ${top}; left: ${left};
  transform:  translate(-50%, -50%) rotate(${rotate});`}>
-   
+   <img class="boxiImg" src={img} ></img>
 </div>
 
 <style>
@@ -24,5 +24,14 @@ top: ${top}; left: ${left};
         
         /* Dokładne wyśrodkowanie */
 
+    }
+    .boxiImg{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        
+        height: 50%;
+        transform: translate(-50%,-50%);
+        opacity: 0;
     }
 </style>
